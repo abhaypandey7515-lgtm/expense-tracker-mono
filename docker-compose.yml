@@ -1,0 +1,14 @@
+# Backend only. The TUI is a terminal program: run it on your own machine and point it here
+# (expense-tracker-tui --api http://127.0.0.1:8000).
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: "sqlite+aiosqlite:////data/expense_tracker.db"
+    volumes:
+      - expense_data:/data
+
+volumes:
+  expense_data:
